@@ -1,6 +1,6 @@
 use crate::ast::{BinaryOp, Expr, LiteralValue};
 use crate::lexer::Token;
-use logos::Lexer;
+use logos::{Lexer, Logos};
 
 pub struct Parser<'a> {
     lexer: Lexer<'a, Token>,
@@ -10,7 +10,7 @@ pub struct Parser<'a> {
 impl<'a> Parser<'a> {
     pub fn new(source: &'a str) -> Self {
         let mut lexer = Token::lexer(source);
-        let current_token = lexer.next();
+        let current_token = lexer.next().and_then(|r| r.ok());
         Self {
             lexer,
             current_token,
@@ -99,6 +99,6 @@ impl<'a> Parser<'a> {
     }
 
     fn consume_token(&mut self) {
-        self.current_token = self.lexer.next();
+        self.current_token = self.lexer.next().and_then(|r| r.ok());
     }
 }

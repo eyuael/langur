@@ -22,10 +22,10 @@ pub enum Token {
     RParen,
 
     // Regular expressions for more complex tokens
-    #[regex("[0-9]+", |lex| lex.slice().parse())]
+    #[regex("[0-9]+", |lex| lex.slice().parse().ok())]
     Number(i64),
 
     // Logo requires a token to handle whitespace
     #[regex(r"[ \t\n\f]+", logos::skip)]
-    Error,
+    Whitespace,
 }
