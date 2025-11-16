@@ -24,6 +24,22 @@ pub enum Token {
      #[token("=")]
     Assign,
 
+    #[token("fn")]
+    Fn,
+    
+    #[token("return")]
+    Return,
+    
+    // Punctuation
+    #[token(",")]
+    Comma,
+    
+    #[token("{")]
+    LBrace,
+    
+    #[token("}")]
+    RBrace,
+
     // Regular expressions for more complex tokens
     #[regex("[0-9]+", |lex| lex.slice().parse().ok())]
     Number(i64),

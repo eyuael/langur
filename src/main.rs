@@ -14,7 +14,7 @@ fn main() {
     evaluate(input1);
 
     // Example 2: Assignment with expression on right side
-    let input2 = "y = 5 + 3";
+    let input2 = "y = 5 * 3";
     println!("\n=== Example 2 ===");
     println!("Evaluating: {}", input2);
     evaluate(input2);

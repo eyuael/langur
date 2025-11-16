@@ -1,4 +1,14 @@
 #[derive(Debug, PartialEq, Clone)]
+
+pub enum Statement {
+  Expression(Expr),
+  FunctionDef {
+    name: String,
+    params: Vec<String>,
+    body: Vec<Statement>,
+  },
+  Return(Option<Box<Expr>>),
+}
 pub enum Expr {
     Binary {
         left: Box<Expr>,
@@ -13,6 +23,10 @@ pub enum Expr {
     Assign {
         name: String,
         value: Box<Expr>,
+    },
+    FunctionCall {
+      name: String,
+      args: Vec<Expr>,
     },
 }
 

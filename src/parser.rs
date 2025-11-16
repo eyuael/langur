@@ -140,4 +140,5 @@ impl<'a> Parser<'a> {
     fn consume_token(&mut self) {
         self.current_token = self.lexer.next().and_then(|r| r.ok());
     }
+    
 }
